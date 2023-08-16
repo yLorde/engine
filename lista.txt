@@ -1,0 +1,18 @@
+ticket (PREMIUM):
+
+-presets:
+> support and others
+> open ticket
+> support 
+
+- use presets and edit message;
+- configure parent and log;
+- configure type of name in channel;
+
+- take support;
+- del support;
+- log of messages in ticket;
+
+Segurança = Ant Flod / Ant Raid / Ant Link / Ant Grifing
+Comando = Ban / Adv Stack /  mute chat / Mute call / Prisão 
+Vip / ticket / Call do suport / privadinho / LOGs

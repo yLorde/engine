@@ -1,0 +1,36 @@
+Mostrar a importância da pessoa no perfil do servidor;
+-> Permissões (Ban, kick)
+-> Dono
+-> Function
+//vou adicionar
+
+Casamento:
+-> Pagar pra casar + caro | sem diária
+-> Free pra separar
+
+Moderação (Recebe mensagem no privado):
+-> Ban 
+-> IPBAN
+-> Kick 
+-> Mute (SE ENTRAR E SAIR MANTEM)
+-> Adv 
+-> Blacklist >> Banido ao entrar
+-> Histórico global (only mod of bot)/local
+-> Antiflood
+-> Antilink
+-> Antibot
+-> Antifake (Não vai ver canais) Permitir / Expulsar / Banir
+-> Antiraid -> tira o cargo do membro e devolve o nome antigo
+
+Sistema de vip:
+-> call vip
+-> Cargo vip
+-> Emoji no cargo
+-> Primeira dama (Modular)
+
+
+0: casado
+1: equipe
+2: comprador
+3: membrovip
+4: dono
