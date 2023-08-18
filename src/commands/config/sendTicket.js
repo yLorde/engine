@@ -1,7 +1,7 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require("discord.js");
 
 module.exports = {
-    name: 'sendTicket',
+    name: 'sendticket',
     aliases: ["st"],
     permission: 'ADMINISTRATOR',
     premium: 'sim',

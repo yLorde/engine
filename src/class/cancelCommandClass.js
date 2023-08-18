@@ -21,8 +21,13 @@ module.exports = class cancelCommandClass {
                 await msg.map(async msgs => {
                     if (msgs.author.id != this.client.user.id) return;
                     if (!msgs.embeds) return;
-                    if (!msgs.embeds[0].data.footer.text.includes(this.user)) return;
-                    await msgs.delete().catch(err => { });
+                    if (msgs.embeds[0].data) {
+                        if (msgs.embeds[0].data.footer.text.includes(this.user)) {
+                            await msgs.delete().catch(err => { });
+                        } else if (msgs.embeds[0].data.footer.text.includes(this.client.users.cache.get(this.user).tag)) {
+                            await msgs.delete().catch(err => { });
+                        };
+                    };
                 });
             })
         });

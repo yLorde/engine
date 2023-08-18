@@ -20,6 +20,5 @@ module.exports = {
 
         const handler = cases[interaction.customId];
         if (handler) await handler();
-
     },
 };
