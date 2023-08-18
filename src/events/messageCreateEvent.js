@@ -121,7 +121,7 @@ module.exports = {
                 await delMessage(message.author);
                 await command.execute(message, args, client);
             } catch (err) {
-                await message.reply({
+                await message.channel.send({
                     content: `${message.author.toString()} unable to execute this command, error code: ${err.code}`,
                 }).then(msg => {
                     setTimeout(() => {

@@ -11,7 +11,19 @@ module.exports = {
                 search: args,
                 degreeType: 'C'
             }, function (err, result) {
-                message.reply({
+                if (err) {
+                    message.channel.send({
+                        content: `${message.author.toString()}, unable to execute this command! **Error:** \`${err.code}.\``
+                    });
+                    return;
+                };
+                if (!result) {
+                    message.channel.send({
+                        content: `${message.author.toString()}, **${args}** Not found!`
+                    });
+                    return;
+                };
+                message.channel.send({
                     embeds: [
                         new EmbedBuilder()
                         .setColor('DarkerGrey')

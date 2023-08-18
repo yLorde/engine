@@ -9,7 +9,7 @@ module.exports = {
             },
 
             createOneTicketModel: async () => {
-
+                
             },
 
             createTwoTicketModel: async () => {
