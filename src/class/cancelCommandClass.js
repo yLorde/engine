@@ -2,10 +2,10 @@ const { Client, GatewayIntentBits, Guild } = require("discord.js");
 const auth = require("../data/auth");
 
 module.exports = class cancelCommandClass {
-    constructor(user, guild, channel) {
-        this.user = user;
-        this.guild = guild;
-        this.channel = channel;
+    constructor(data) {
+        this.user = data.user;
+        this.guild = data.guild;
+        this.channel = data.channel;
         this.client = new Client({
             intents: [
                 GatewayIntentBits.Guilds,
@@ -21,6 +21,8 @@ module.exports = class cancelCommandClass {
                 await msg.map(async msgs => {
                     if (msgs.author.id != this.client.user.id) return;
                     if (!msgs.embeds) return;
+                    if (!msgs.embeds[0]) return;
+                    if (!msgs.embeds[0].data) return;
                     if (msgs.embeds[0].data) {
                         if (msgs.embeds[0].data.footer.text.includes(this.user)) {
                             await msgs.delete().catch(err => { });

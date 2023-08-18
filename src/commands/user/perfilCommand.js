@@ -81,7 +81,7 @@ module.exports = {
     **Bio**:
     ${bio}
     
-    **Server Permissions:** \n\`${permissions.join(', ')}\`
+    **Server's Permissions:** \n\`${permissions.join(', ')}\`
     `)
             if (member.displayAvatarURL({ size: 4096 })) embed.setThumbnail(clientUser.displayAvatarURL({ size: 4096 }));
 

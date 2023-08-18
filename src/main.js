@@ -49,12 +49,10 @@ client.config = new Collection();
 client.setMaxListeners(50);
 client.login(discordToken);
 
-// process.on('multipleResolves', async () => { });
-// process.on('rejectionHandled', async () => { });
-// process.on('uncaughtException', async () => { });
-// process.on('uncaughtExceptionMonitor', async () => { });
-// process.on('unhandledRejection', async () => { });
-// process.on('warning', async () => { });
+process.on('uncaughtException', async (err) => {
+    console.log(err.message);
+    console.log(err.stack);
+});
 
 const functions = fs.readdirSync("./src/functions/handler").filter(file => file.endsWith('.js'));
 const eventFiles = fs.readdirSync("./src/events").filter(file => file.endsWith('.js'));

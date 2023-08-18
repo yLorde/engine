@@ -49,7 +49,6 @@ module.exports = {
             //                 )
             //                 .setThumbnail(member.user.avatarURL({ size: 4096 }))
             //                 .setColor('DarkerGrey')
-            //                 .setFooter({ text: `Engine Log.` })
             //                 .setTimestamp()
             //         ],
             //     }).catch(err => { });
@@ -81,7 +80,6 @@ module.exports = {
                         )
                         .setThumbnail(author.user.avatarURL({ size: 4096 }))
                         .setColor('DarkerGrey')
-                        .setFooter({ text: `Engine Log.` })
                         .setTimestamp()
                 ]
             }).catch(err => { });

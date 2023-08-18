@@ -4,7 +4,12 @@ module.exports = {
     name: 'cancelar',
     aliases: ["cancel"],
     async execute(message) {
-        const command = new cancelCommandClass(message.author.id, message.guild.id, message.channel.id);
+        const data = {
+            "user": message.author.id,
+            "guild": message.guild.id,
+            "channel": message.channel.id,
+        };
+        const command = new cancelCommandClass(data);
         command.run();
     },
 };

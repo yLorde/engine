@@ -108,15 +108,20 @@ module.exports = {
             try {
                 if (command.permission) {
                     if (!message.member.permissions.has(command.permission)) {
-                        await message.reply({
+                        await message.channel.send({
                             content: `${message.author.toString()}, you do not have permissions to use this command.`,
                         }).then(async (msg) => {
                             setTimeout(() => {
                                 msg.delete().catch(err => { });
                             }, 15000)
                         });
+                        delMessage(message.author);
                         return;
                     };
+                };
+
+                if (command.id) {
+                    if (message.author.id != command.id) return delMessage(message.author);
                 };
                 await delMessage(message.author);
                 await command.execute(message, args, client);
