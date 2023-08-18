@@ -1,13 +1,14 @@
-const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits, Guild } = require("discord.js");
 const auth = require("../data/auth");
 
-const cancelCommandClass = new class cancelCommandClass {
+module.exports = class cancelCommandClass {
     constructor(user, guild, channel) {
         this.user = user;
         this.guild = guild;
         this.channel = channel;
         this.client = new Client({
             intents: [
+                GatewayIntentBits.Guilds,
                 GatewayIntentBits.GuildMessages,
                 GatewayIntentBits.GuildMembers,
             ]
@@ -16,11 +17,14 @@ const cancelCommandClass = new class cancelCommandClass {
 
     async run() {
         this.client.on('ready', async () => {
-            this.client.guilds.cache.get(this.guild).channels.cache.get(this.channel).messages.fetch({
-                limit: 5
-            }).then(async msg => {
-                console.log(msg);
-            });
+            this.client.guilds.cache.get(this.guild).channels.cache.get(this.channel).messages.fetch({ limit: 5 }).then(async msg => {
+                await msg.map(async msgs => {
+                    if (msgs.author.id != this.client.user.id) return;
+                    if (!msgs.embeds) return;
+                    if (!msgs.embeds[0].data.footer.text.includes(this.user)) return;
+                    await msgs.delete().catch(err => { });
+                });
+            })
         });
 
         this.client.login(auth.discordToken);
@@ -29,5 +33,3 @@ const cancelCommandClass = new class cancelCommandClass {
         }, 60000);
     };
 };
-
-module.exports = cancelCommandClass;

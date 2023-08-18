@@ -68,7 +68,7 @@ module.exports = {
             const embed = new EmbedBuilder();
             embed.setTitle(`Perfil of: ${clientUser.tag}`);
             embed.setColor(globalUser.perfil.color);
-            embed.setFooter({ text: `Request by: ${message.author.tag}` });
+            embed.setFooter({ text: `Request by: ${message.author.tag} | ${message.author.id}` });
 
             if (globalUser.perfil.background != "null") {
                 embed.setImage(globalUser.perfil.background)

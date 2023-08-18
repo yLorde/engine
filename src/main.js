@@ -4,6 +4,8 @@ const path = require('node:path');
 const { discordToken } = require("./data/auth");
 const { magenta } = require('colors');
 
+console.clear();
+
 const client = new Client({
     intents: [
         GatewayIntentBits.AutoModerationConfiguration,
@@ -34,7 +36,7 @@ const client = new Client({
         Partials.Reaction,
         Partials.ThreadMember,
         Partials.User
-    ], 
+    ],
 });
 
 client.commands = new Collection();
@@ -45,8 +47,14 @@ client.usage = new Collection();
 client.config = new Collection();
 
 client.setMaxListeners(50);
-
 client.login(discordToken);
+
+// process.on('multipleResolves', async () => { });
+// process.on('rejectionHandled', async () => { });
+// process.on('uncaughtException', async () => { });
+// process.on('uncaughtExceptionMonitor', async () => { });
+// process.on('unhandledRejection', async () => { });
+// process.on('warning', async () => { });
 
 const functions = fs.readdirSync("./src/functions/handler").filter(file => file.endsWith('.js'));
 const eventFiles = fs.readdirSync("./src/events").filter(file => file.endsWith('.js'));
