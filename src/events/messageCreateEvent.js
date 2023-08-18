@@ -13,15 +13,24 @@ module.exports = {
             if (message.author.bot) return;
             if (!message.guild) return;
 
-            async function delMessage(user) {
+            async function delMessage(user, param) {
                 message.channel.messages.fetch({
                     limit: 5
                 }).then(async (msg) => {
                     msg.map((m) => {
-                        if (m.content.startsWith(prefix)) {
-                            if (m.author.id === user.id) {
-                                m.delete().catch(err => { });
+                        if (param) {
+                            if (param === 'mention') {
+                                if (m.author.id != user.id) return;
+                                if (m.content === `<@${client.user.id}>`) {
+                                    m.delete().catch(err => { });
+                                    return;
+                                };
                             };
+                            return;
+                        };
+                        if (m.content.startsWith(prefix)) {
+                            if (m.author.id != user.id) return;
+                            m.delete().catch(err => { });
                         };
                     });
                 });
@@ -38,6 +47,7 @@ module.exports = {
             };
 
             if (message.content === `<@${client.user.id}>`) {
+                await delMessage(message.author, 'mention');
                 await message.channel.send({
                     content: message.author.toString(),
                     embeds: [
